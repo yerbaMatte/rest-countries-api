@@ -43,3 +43,4 @@ Some suggestions can be found below:
 Questions :
 
 1. How to center the moon svg icon?
+2. How to store rendered SVG icon? (REST API - single char)
