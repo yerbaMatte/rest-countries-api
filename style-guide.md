@@ -44,3 +44,17 @@ Questions :
 
 1. How to center the moon svg icon?
 2. How to store rendered SVG icon? (REST API - single char)
+3. Await keyword line 40 :
+   "
+   // FILTERING METHOD
+   selectRegion.addEventListener('change', async function () {
+   // Why do I need await keyword again here?
+   let dane = await getData;
+   flagsBox.innerHTML = '';
+
+// Filter - Africa Americas Antarctic Asia Europe Oceania
+dane = dane.filter((x) => x.region === this.value);
+createAllCountries(dane);
+});
+
+"

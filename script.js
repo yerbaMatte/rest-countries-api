@@ -1,12 +1,13 @@
 'use strict';
 
 const selectRegion = document.querySelector('select[name="regions"]');
+const searchInput = document.querySelector('#search');
 const flagsBox = document.querySelector('.flags-box');
 const dFlag = document.querySelector('.d-flag');
 
-const getData = fetch('https://restcountries.com/v3.1/all')
-  .then((x) => x.json())
-  .then((x) => x);
+const getData = fetch('https://restcountries.com/v3.1/all').then((x) =>
+  x.json()
+);
 
 const countryHTML = (country) => `<div class='d-flag'>
   <div class="box-svg"><img class='flag-svg' src='${
@@ -37,10 +38,18 @@ createAllCountries(getData);
 
 // FILTERING METHOD
 selectRegion.addEventListener('change', async function () {
+  // Why do I need await keyword again here?
   let dane = await getData;
   flagsBox.innerHTML = '';
 
   // Filter - Africa Americas Antarctic Asia Europe Oceania
   dane = dane.filter((x) => x.region === this.value);
   createAllCountries(dane);
+});
+
+// SEARCH FOR COUNTRIES
+searchInput.addEventListener('input', async function (e) {
+  let dane = await getData;
+  flagsBox.innerHTML = '';
+  createAllCountries(dane.filter((x) => x.name.common.startsWith(this.value)));
 });
