@@ -2,6 +2,11 @@ body {
   font-family: 'Nunito Sans', sans-serif;
 }
 
+p {
+  margin: 0;
+  padding: 0;
+}
+
 /* HEADER */
 
 header {
@@ -59,23 +64,50 @@ select[name='regions'] {
 
 /* FLAGS CONTAINER */
 
-.d-flag {
-  width: 250px;
-  height: 300px;
-  display: flex;
-  flex-direction: column;
+.flags-box {
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 80px;
+  margin-top: 32px;
 }
 
-.box-svg,
-.country-content {
-  height: 50%;
+.d-flag {
+  width: 250px;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 16px -8px rgba(66, 68, 90, 1);
+  border-radius: 20px;
+  overflow: hidden;
 }
 
 .box-svg {
+  height: 40%;
+}
+
+.country-content {
+  height: 60%;
+}
+
+.country-name {
+  font-size: 24px;
+  text-align: center;
+  margin-top: 18px;
+  font-weight: 500;
+}
+
+.country-content span {
+  font-weight: 600;
+}
+
+.country-desc {
+  margin-top: 18px;
+  padding: 12px;
 }
 
 .flag-svg {
   width: 250px;
-  height: 150px;
+  height: 140px;
   object-fit: cover;
+  border-bottom: 1px solid rgba(0, 0, 0, 15%);
 }

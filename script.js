@@ -1,5 +1,6 @@
 'use strict';
 
+const selectRegion = document.querySelector('select[name="regions"]');
 const flagsBox = document.querySelector('.flags-box');
 const dFlag = document.querySelector('.d-flag');
 
@@ -7,31 +8,39 @@ const getData = fetch('https://restcountries.com/v3.1/all')
   .then((x) => x.json())
   .then((x) => x);
 
-async function createCountry() {
-  const jsonData = await getData;
-  // GB DATA
-  const htmlFlag = `<div class='d-flag'>
+const countryHTML = (country) => `<div class='d-flag'>
   <div class="box-svg"><img class='flag-svg' src='${
-    jsonData[27].flags.svg
+    country.flags.svg
   }' alt='' /></div>
   <div class='country-content'>
-    <p class='country-name'>${jsonData[27].altSpellings[2]}</p>
+    <p class='country-name'>${country.name.common}</p>
+    <div class="country-desc">
     <p class='country-population'>
-      <span>Population: </span>${jsonData[27].population.toLocaleString(
-        'en-US'
-      )}
+      <span>Population: </span>${country.population.toLocaleString('en-US')}
     </p>
     <p class='country-region'>
-      <span>Region: </span>${jsonData[27].region}
+      <span>Region: </span>${country.region}
     </p>
     <p class='country-capital'>
-      <span>Capital: </span>${jsonData[27].capital}
-    </p>
+      <span>Capital: </span>${country.capital}
+    </p></div>
   </div>
-</div>`;
+  </div>`;
 
-  flagsBox.insertAdjacentHTML('afterbegin', htmlFlag);
-  console.log(jsonData[27]);
+async function createAllCountries(getData) {
+  for (let country of await getData) {
+    flagsBox.insertAdjacentHTML('afterbegin', countryHTML(country));
+  }
 }
 
-createCountry();
+createAllCountries(getData);
+
+// FILTERING METHOD
+selectRegion.addEventListener('change', async function () {
+  let dane = await getData;
+  flagsBox.innerHTML = '';
+
+  // Filter - Africa Americas Antarctic Asia Europe Oceania
+  dane = dane.filter((x) => x.region === this.value);
+  createAllCountries(dane);
+});
