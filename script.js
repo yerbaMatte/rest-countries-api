@@ -51,5 +51,15 @@ selectRegion.addEventListener('change', async function () {
 searchInput.addEventListener('input', async function (e) {
   let dane = await getData;
   flagsBox.innerHTML = '';
-  createAllCountries(dane.filter((x) => x.name.common.startsWith(this.value)));
+  if (this.value) {
+    createAllCountries(
+      dane.filter((x) =>
+        x.name.common.startsWith(
+          this.value[0].toUpperCase() + this.value.slice(1, -1)
+        )
+      )
+    );
+  } else {
+    createAllCountries(getData);
+  }
 });
