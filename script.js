@@ -4,6 +4,7 @@ const selectRegion = document.querySelector('select[name="regions"]');
 const searchInput = document.querySelector('#search');
 const flagsBox = document.querySelector('.flags-box');
 const dFlag = document.querySelector('.d-flag');
+const modeButton = document.querySelector('.btn-secondary');
 
 const getData = fetch('https://restcountries.com/v3.1/all').then((x) =>
   x.json()
@@ -62,4 +63,9 @@ searchInput.addEventListener('input', async function (e) {
   } else {
     createAllCountries(getData);
   }
+});
+
+// DARK/LIGHT MODE
+modeButton.addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
 });

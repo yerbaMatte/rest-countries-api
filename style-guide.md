@@ -57,4 +57,4 @@ dane = dane.filter((x) => x.region === this.value);
 createAllCountries(dane);
 });
 
-"
+" 4. If I use Promise chaining / await, how long they wait for response?
