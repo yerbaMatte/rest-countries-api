@@ -98,7 +98,7 @@ flagsBox.addEventListener('click', async function (e) {
   };
 
   const detailsHTML = (country) =>
-    `<div class="container h-100 d-flex align-items-center justify-content-center d-flex">
+    `<div class="container h-100 d-flex align-items-center justify-content-center">
     <div class="d-flex align-items-center justify-content-center>
   <div class="flag-container p-4"><img class='flag-svg' src='${
     country.flags.svg

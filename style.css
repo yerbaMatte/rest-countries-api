@@ -182,3 +182,39 @@ body.dark-mode {
 .hidden {
   display: none;
 }
+
+@media (max-width: 992px) {
+  .flags-box {
+    justify-content: space-around;
+  }
+}
+
+@media (max-width: 768px) {
+  .flags-box {
+    grid-gap: 16px;
+  }
+  h3 {
+    font-size: 24px;
+  }
+  .btn-secondary {
+    padding: 3px 6px;
+    font-size: 12px;
+  }
+  .btn-secondary svg {
+    height: 12px;
+    width: 12px;
+  }
+  .search input,
+  .filter select {
+    font-size: 12px;
+  }
+  .flags-box {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .container.d-flex.justify-content-center {
+    flex-direction: column;
+  }
+}
