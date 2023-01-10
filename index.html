@@ -20,9 +20,9 @@
     <title>Where in the world?</title>
   </head>
   <body>
-    <header class="py-4">
-      <div class="container">
-        <nav class="navbar">
+    <header>
+      <nav class="navbar">
+        <div class="container py-4">
           <h3>Where in the World?</h3>
           <button type="button" class="btn btn-secondary">
             <svg
@@ -41,12 +41,12 @@
             </svg>
             Dark Mode
           </button>
-        </nav>
-      </div>
+        </div>
+      </nav>
     </header>
     <section>
-      <div class="container my-4">
-        <div class="search-bar d-flex justify-content-between">
+      <div class="container">
+        <div class="search-bar d-flex justify-content-between py-4">
           <div class="search">
             <input
               id="search"
@@ -71,6 +71,8 @@
         </div>
       </div>
       <div class="container flags-box"></div>
+      <div class="country-container cont-fired hidden"></div>
+      <!-- country layer  -->
     </section>
     <script src="script.js"></script>
     <script
